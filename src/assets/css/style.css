@@ -65,18 +65,19 @@ body {
 }
 
 /* Hero */
+/* ...existing code... */
 .hero {
   min-height: 90vh;
+  padding-top: 72px;
   background: radial-gradient(
       circle at 30% 50%,
       rgba(6, 215, 184, 0.25),
       transparent 70%
     ),
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1400&q=60')
-      center/cover no-repeat;
-  padding-top: 72px;
+    url('../img/gym.png') center/cover no-repeat;
 }
+/* ...existing code... */
 .hero .btn-cta {
   background: var(--pf-gradient);
   border: none;
