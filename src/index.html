@@ -17,7 +17,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous">
     <!-- ! CSS personalizado -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- ! Fuente de jQuery -->
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -29,8 +29,15 @@
       });
     </script>
 
+    <!-- * Cargar nav -->
+    <script>
+      $(function(){
+        $("#mainNav").load("components/mainNav.html", function(){ window.PowerFit && PowerFit.fixNavLinks(); });
+      });
+    </script>
   </head>
   <body>
+    <div id="mainNav"></div>
     <div id="header"></div>
     <!-- ! JavaScript de Bootstrap -->
     <script
