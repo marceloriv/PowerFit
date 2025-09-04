@@ -21,20 +21,6 @@
     <!-- ! Fuente de jQuery -->
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <!-- * Cargar Header -->
-    <script>
-      $(function(){
-        $("#header").load("components/header.html");
-      });
-    </script>
-
-    <!-- * Cargar nav -->
-    <script>
-      $(function(){
-        $("#mainNav").load("components/mainNav.html", function(){ window.PowerFit && PowerFit.fixNavLinks(); });
-      });
-    </script>
   </head>
   <body>
     <div id="mainNav"></div>
@@ -44,5 +30,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"></script>
+    <!-- Script principal con lógica de carga de componentes -->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
