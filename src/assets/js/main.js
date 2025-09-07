@@ -21,11 +21,12 @@
 
   $(function () {
     // ! recordar que hay que renombrar los archivos si es que cambian de lugar o nombre
-    loadComponent('#mainNav', 'components/mainNav.html', function () {
+    loadComponent('#mainNav', '../../components/mainNav.html', function () {
       if (window.PowerFit && typeof PowerFit.fixNavLinks === 'function') {
         PowerFit.fixNavLinks();
       }
     });
-    loadComponent('#header', 'components/header.html');
+    loadComponent('#header', '../../components/header.html');
+    loadComponent('#footer', '../../components/footer.html');
   });
 })();
