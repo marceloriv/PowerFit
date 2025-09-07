@@ -1,104 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Perfil - PowerFit</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-            rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <nav id="mainNav"
-            class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
-            <div class="container">
-                <a class="navbar-brand fw-bold brand-title"
-                    href="index.html">PowerFit</a>
-                <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                    aria-controls="navbarContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link"
-                                href="index.html">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="productos.html">Catálogo</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                href="carrito.html">Carrito <span
-                                    id="cart-count"
-                                    class="badge text-bg-light ms-1">0</span></a></li>
-                        <li class="nav-item"><a class="nav-link active"
-                                href="perfil.html">Perfil</a></li>
-                    </ul>
-                </div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - PowerFit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+  </head>
+  <body>
+    <div id="mainNav"></div>
+
+    <main class="pt-5 mt-5">
+      <section class="py-5" id="perfil">
+        <div class="container">
+          <h1 class="section-title">Perfil</h1>
+          <form id="profile-form" class="row g-3" novalidate>
+            <div class="col-md-4">
+              <label for="profile-name"
+                class="form-label">Nombre</label>
+              <input type="text" id="profile-name"
+                class="form-control" required>
+              <div class="invalid-feedback">Ingresa tu
+                nombre.</div>
             </div>
-        </nav>
-
-        <main class="pt-5 mt-5">
-            <section class="py-5" id="perfil">
-                <div class="container">
-                    <h1 class="section-title">Perfil</h1>
-                    <form id="profile-form" class="row g-3" novalidate>
-                        <div class="col-md-4">
-                            <label for="profile-name"
-                                class="form-label">Nombre</label>
-                            <input type="text" id="profile-name"
-                                class="form-control" required>
-                            <div class="invalid-feedback">Ingresa tu
-                                nombre.</div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="profile-email"
-                                class="form-label">Correo</label>
-                            <input type="email" id="profile-email"
-                                class="form-control" required>
-                            <div class="invalid-feedback">Correo inválido.</div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="profile-goal"
-                                class="form-label">Objetivo Fitness</label>
-                            <select id="profile-goal" class="form-select"
-                                required>
-                                <option value>Selecciona...</option>
-                                <option value="Fuerza">Fuerza</option>
-                                <option value="Energía">Energía</option>
-                                <option
-                                    value="Recuperación">Recuperación</option>
-                                <option value="Salud Inmunológica">Salud
-                                    Inmunológica</option>
-                            </select>
-                            <div class="invalid-feedback">Selecciona un
-                                objetivo.</div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit"
-                                class="btn btn-primary">Guardar Perfil</button>
-                            <span id="profile-status" class="ms-2 small"></span>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <footer class="py-4 footer text-light">
-            <div class="container small text-center">
-                <strong>PowerFit</strong> © <span id="year"></span>
+            <div class="col-md-4">
+              <label for="profile-email"
+                class="form-label">Correo</label>
+              <input type="email" id="profile-email"
+                class="form-control" required>
+              <div class="invalid-feedback">Correo inválido.</div>
             </div>
-        </footer>
+            <div class="col-md-4">
+              <label for="profile-goal"
+                class="form-label">Objetivo Fitness</label>
+              <select id="profile-goal" class="form-select"
+                required>
+                <option value>Selecciona...</option>
+                <option value="Fuerza">Fuerza</option>
+                <option value="Energía">Energía</option>
+                <option
+                  value="Recuperación">Recuperación</option>
+                <option value="Salud Inmunológica">Salud
+                  Inmunológica</option>
+              </select>
+              <div class="invalid-feedback">Selecciona un
+                objetivo.</div>
+            </div>
+            <div class="col-12">
+              <button type="submit"
+                class="btn btn-primary">Guardar Perfil</button>
+              <span id="profile-status" class="ms-2 small"></span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
 
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/perfil.js"></script>
-    </body>
+    <footer class="py-4 footer text-light">
+      <div class="container small text-center">
+        <strong>PowerFit</strong> © <span id="year"></span>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+  </body>
 </html>
