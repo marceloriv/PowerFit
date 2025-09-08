@@ -5,65 +5,73 @@
 
 (function () {
   // Detectar profundidad de la página para ajustar rutas
-  function getBasePath() {
-    const path = window.location.pathname.replace(/\\/g, '/');
-    return path.includes('/pages/') ? '../../' : './';
+
+  function obtenerRutaBase() {
+    const ruta = window.location.pathname.replace(/\\/g, '/');
+    return ruta.includes('/pages/') ? '../../' : './';
   }
 
-  function loadComponent(target, url, cb) {
-    const $el = $(target);
+  function cargarComponente(destino, url, callback) {
+    const $el = $(destino);
     if (!$el.length) return;
 
-    console.log(`Cargando: ${url} en ${target}`);
-    $el.load(url, function (_, status, xhr) {
-      if (status !== 'success') {
+    console.log(`Cargando: ${url} en ${destino}`);
+    $el.load(url, function (_, estado, xhr) {
+      if (estado !== 'success') {
         console.warn(`No se pudo cargar: ${url} (${xhr?.status})`);
       } else {
         console.log(`✓ Cargado: ${url}`);
       }
-      cb && cb();
+      callback && callback();
     });
   }
 
   $(function () {
-    const basePath = getBasePath();
-    console.log(`Base path detectado: ${basePath}`);
+    const rutaBase = obtenerRutaBase();
+    console.log(`Ruta base detectada: ${rutaBase}`);
 
     // Cargar navbar
-    loadComponent(
+    cargarComponente(
       '#mainNav',
-      basePath + 'components/mainNav.html',
+      rutaBase + 'components/mainNav.html',
       function () {
-        if (window.PowerFit && typeof PowerFit.fixNavLinks === 'function') {
-          PowerFit.fixNavLinks();
+        if (
+          window.PowerFit &&
+          typeof PowerFit.ajustarEnlacesNav === 'function'
+        ) {
+          PowerFit.ajustarEnlacesNav();
         }
       }
     );
 
     // Cargar header (solo si existe el contenedor)
     if ($('#header').length) {
-      loadComponent('#header', basePath + 'components/header.html');
+      cargarComponente('#header', rutaBase + 'components/header.html');
     }
 
     // Cargar footer
-    loadComponent('#footer', basePath + 'components/footer.html', function () {
-      // Actualizar año automáticamente
-      const yearSpan = document.getElementById('year');
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    cargarComponente(
+      '#footer',
+      rutaBase + 'components/footer.html',
+      function () {
+        // Actualizar año automáticamente
+        const yearSpan = document.getElementById('year');
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
+        }
       }
-    });
+    );
   });
 
   // Configurar enlaces del navbar según la profundidad
   window.PowerFit = window.PowerFit || {};
-  window.PowerFit.fixNavLinks = function () {
-    const isDeep = window.location.pathname
+  window.PowerFit.ajustarEnlacesNav = function () {
+    const esProfundo = window.location.pathname
       .replace(/\\/g, '/')
       .includes('/pages/');
-    const base = isDeep ? '../../' : './';
+    const base = esProfundo ? '../../' : './';
 
-    const linkMap = {
+    const mapaEnlaces = {
       '[data-link-root]': 'index.html',
       '[data-link-inicio]': 'index.html',
       '[data-link-catalogo]': 'pages/catalogo/catalogo.html',
@@ -73,10 +81,10 @@
       '[data-link-login]': 'pages/login/login.html',
     };
 
-    Object.entries(linkMap).forEach(([selector, path]) => {
+    Object.entries(mapaEnlaces).forEach(([selector, ruta]) => {
       const $link = $(selector);
       if ($link.length) {
-        $link.attr('href', base + path);
+        $link.attr('href', base + ruta);
       }
     });
 
