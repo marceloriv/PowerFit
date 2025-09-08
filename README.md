@@ -10,11 +10,9 @@ El proyecto está organizado en la siguiente estructura de directorios:
 
 ```pgsql
 PowerFit
-Listado de rutas de carpetas
-El n·mero de serie del volumen es 50DF-1050
-C:.
 |   README.md
 |   
++---.vscode
 \---src
     |   index.html
     |   
@@ -22,12 +20,25 @@ C:.
     |   +---css
     |   |       style.css
     |   |       
+    |   +---img
+    |   |       bcaa.png
+    |   |       creatina.png
+    |   |       glutamina.png
+    |   |       gym.png
+    |   |       magnesio.png
+    |   |       omega-3.png
+    |   |       pre-entreno.png
+    |   |       proteina-vegana.png
+    |   |       proteina.png
+    |   |       vitamina-d.png
+    |   |       
     |   \---js
     |           main.js
     |           
     +---components
     |       footer.html
     |       header.html
+    |       mainNav.html
     |       
     +---data
     |       products.json
@@ -43,8 +54,11 @@ C:.
         |       contacto.html
         |       
         +---login
-        |       login.html
-        |       
+        |   |   login.html
+        |   |   
+        |   \---js
+        |           login.js
+        |           
         +---perfil
         |       perfil.html
         |       
