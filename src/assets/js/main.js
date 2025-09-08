@@ -1,21 +1,28 @@
 /*
- * Punto Central de JavaScript
- * Aca se pueden agregar funcionalidades comunes a todas las páginas
- * Por ejemplo, inicializar plugins, manejar eventos globales, etc.
- * cargar el footer y header
- * ...cosas
+ * PowerFit - JavaScript Principal
+ * Carga componentes comunes y maneja funcionalidades globales
  */
 
-/* Loader de componentes comunes */
 (function () {
-  function loadComponent(target, url, cb) {
-    const $el = $(target);
+  // Detectar profundidad de la página para ajustar rutas
+
+  function obtenerRutaBase() {
+    const ruta = window.location.pathname.replace(/\\/g, '/');
+    return ruta.includes('/pages/') ? '../../' : './';
+  }
+
+  function cargarComponente(destino, url, callback) {
+    const $el = $(destino);
     if (!$el.length) return;
-    $el.load(url, function (_, status) {
-      if (status !== 'success') {
-        console.warn('No se pudo cargar:', url);
+
+    console.log(`Cargando: ${url} en ${destino}`);
+    $el.load(url, function (_, estado, xhr) {
+      if (estado !== 'success') {
+        console.warn(`No se pudo cargar: ${url} (${xhr?.status})`);
+      } else {
+        console.log(`✓ Cargado: ${url}`);
       }
-      cb && cb();
+      callback && callback();
     });
   }
 
@@ -27,11 +34,5 @@
       }
     });
     loadComponent('#header', 'components/header.html');
-
-    // Redirigir el botón "Compra Ahora" a la página de suplementos
-    $(document).on('click', '.btn-cta', function (e) {
-      e.preventDefault(); // Evitar el comportamiento por defecto
-      window.location.href = 'pages/catalogo/catalogo.html'; // Redirigir al catálogo
-    });
   });
 })();

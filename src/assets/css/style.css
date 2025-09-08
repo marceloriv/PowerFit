@@ -17,6 +17,12 @@
   --pf-gradient: linear-gradient(135deg, var(--pf-turquoise), var(--pf-blue));
 }
 
+/* Layout sticky footer */
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -24,6 +30,17 @@ body {
   background-color: #111;
   color: #ddd;
   scroll-behavior: smooth;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#site-footer {
+  margin-top: auto;
 }
 
 .brand-title,
@@ -69,7 +86,7 @@ body {
 }
 
 /* Hero */
-/* ...existing code... */
+
 .hero {
   min-height: 90vh;
   padding-top: 72px;
@@ -258,6 +275,10 @@ textarea:focus {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+#site-footer {
+  margin-top: auto;
 }
 
 /* Scrollbar (webkit) */
