@@ -1,4 +1,7 @@
-/* login.js - Simulación de sesión (nombres en español) */
+/* Js para el sistema de login del usuario que esta regitrado....
+ ! faltaria cambiar que una vez inicida la sesion el mainNav cambie a perfil y cerrar sesion
+ * porrrrrrrrrrrrrrrrr deos
+ */
 
 // Simulación de base de datos de usuarios registrados
 const usuariosRegistrados = [
@@ -92,4 +95,6 @@ $(function () {
       .text('¡Bienvenido! Iniciando sesión...');
     setTimeout(() => (window.location.href = '../perfil/perfil.html'), 1200);
   });
+
+  // ayuda pls
 });
