@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Productos</title>
-    </head>
-    <body>
 
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <button onclick="window.history.back()" class="btn btn-secondary mb-3">← Volver</button>
+        <h2 class="mb-4"> Suplementos deportivos</h2>
+        <!-- Filtro por tipo de suplemento -->
+        <div class="mb-4">
+            <label for="filtroTipo" class="form-label">Filtrar por tipo:</label>
+            <select id="filtroTipo" class="form-select" onchange="filtrarProductos()">
+                <option value="todos">Todos</option>
+                <option value="proteina">Proteína</option>
+                <option value="creatina">Creatina</option>
+                <option value="pre-entreno">Pre-Entreno</option>
+                <option value="vitamina">Vitamina</option>
+                <option value="magnesio">Magnesio</option>
+                <option value="bcaa">BCAA</option>
+                <option value="glutamina">Glutamina</option>
+                <option value="omega-3">Omega-3</option>
+            </select>
+        </div>
+        <div class="row" id="productos-lista">
+            <!-- Aquí se mostrarán los productos -->
+        </div>
+    </div>
+    <script>
+        const productos = [
+            { nombre: "Proteina Whey", tipo: "proteina", descripcion: "Ideal para recuperación muscular.", precio: "$33.000", imagen: "../../assets/img/proteina.png" },
+            { nombre: "Creatina Monohidratada", tipo: "creatina", descripcion: "Mejora fuerza y rendimiento.", precio: "$26.590", imagen: "../../assets/img/creatina.png" },
+            { nombre: "Pre-Entreno", tipo: "pre-entreno", descripcion: "Cafeina perfecta para esos dias de agotamiento.", precio: "$40.500", imagen: "../../assets/img/pre-entreno.png" },
+            { nombre: "Proteina Vegana", tipo: "proteina", descripcion: "Fuente de proteína para veganos.", precio: "$35.000", imagen: "../../assets/img/proteina-vegana.png" },
+            { nombre: "Vitamina D", tipo: "vitamina", descripcion: "Vitaminas esenciales para el cuerpo y la salud.", precio: "$20.000", imagen: "../../assets/img/vitamina-d.png" },
+            { nombre: "Magnesio", tipo: "magnesio", descripcion: "Recuperación y sistema inmunológico.", precio: "$18.500", imagen: "../../assets/img/magnesio.png" },
+            { nombre: "BCAA", tipo: "bcaa", descripcion: "Aminoácidos esenciales para la recuperación muscular.", precio: "$30.000", imagen: "../../assets/img/BCAA.png" },
+            { nombre: "Glutamina", tipo: "glutamina", descripcion: "Apoya la recuperación y el sistema inmunológico.", precio: "$28.000", imagen: "../../assets/img/Glutamina.png" },
+            { nombre: "Omega-3", tipo: "omega-3", descripcion: "Ácidos grasos esenciales para la salud cardiovascular.", precio: "$22.000", imagen: "../../assets/img/omega-3.png" }
+        ];
+
+        function mostrarProductos(lista) {
+            const contenedor = document.getElementById('productos-lista');
+            contenedor.innerHTML = '';
+            lista.forEach(producto => {
+                contenedor.innerHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                            <div class="card-body">
+                                <h5 class="card-title">${producto.nombre}</h5>
+                                <p class="card-text">${producto.descripcion}</p>
+                                <p class="card-text"><strong>${producto.precio}</strong></p>
+                                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filtrarProductos() {
+            const tipo = document.getElementById('filtroTipo').value;
+            if (tipo === 'todos') {
+                mostrarProductos(productos);
+            } else {
+                const filtrados = productos.filter(p => p.tipo === tipo);
+                mostrarProductos(filtrados);
+            }
+        }
+
+        // Mostrar todos al cargar
+        mostrarProductos(productos);
+    </script>
+</body>
+
 </html>
