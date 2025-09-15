@@ -4,25 +4,24 @@
  */
 
 (function () {
-  // Detectar profundidad de la página para ajustar rutas
 
   function obtenerRutaBase() {
     const ruta = window.location.pathname.replace(/\\/g, '/');
     return ruta.includes('/pages/') ? '../../' : './';
   }
 
-  function cargarComponente(destino, url, callback) {
-    const $el = $(destino);
+  function loadComponent(target, url, cb) {
+    const $el = $(target);
     if (!$el.length) return;
 
-    console.log(`Cargando: ${url} en ${destino}`);
-    $el.load(url, function (_, estado, xhr) {
-      if (estado !== 'success') {
-        console.warn(`No se pudo cargar: ${url} (${xhr?.status})`);
+    console.log(`Intentando cargar: ${url}`);
+    $el.load(url, function (_, status) {
+      if (status !== 'success') {
+        console.warn(`No se pudo cargar: ${url}`);
       } else {
-        console.log(`✓ Cargado: ${url}`);
+        console.log(`✓ Componente cargado: ${url}`);
       }
-      callback && callback();
+      cb && cb();
     });
   }
 
