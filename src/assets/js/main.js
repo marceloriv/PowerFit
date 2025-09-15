@@ -33,5 +33,12 @@
       }
     });
     loadComponent('#header', 'components/header.html');
+
+    // Redirigir el botón "Compra Ahora" a la página de suplementos
+    $(document).on('click', '.btn-cta', function (e) {
+      e.preventDefault(); // Evitar el comportamiento por defecto
+      window.location.href = 'pages/catalogo/catalogo.html'; // Redirigir al catálogo
+    });
+
   });
 })();
